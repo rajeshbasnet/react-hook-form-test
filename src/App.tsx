@@ -1,9 +1,10 @@
 import React from "react";
+import YoutubeForm from "./components/YoutubeForm";
 
 const App: React.FC = () => {
   return (
     <main>
-      <form></form>
+      <YoutubeForm />
     </main>
   );
 };
