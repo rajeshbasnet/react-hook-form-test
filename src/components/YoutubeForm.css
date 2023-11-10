@@ -20,7 +20,6 @@ label {
 
 input[type="text"] {
   display: block;
-  margin: 0 0 1rem;
   outline: none;
   padding: 0.5rem 0.5rem;
   border-radius: 5px;
@@ -37,4 +36,10 @@ button {
   font-weight: bold;
   margin-top: 1rem;
   cursor: pointer;
+}
+
+.error__message {
+  color: rgb(244, 203, 203);
+  font-size: 1rem;
+  margin: 0.3rem 0 1rem;
 }
