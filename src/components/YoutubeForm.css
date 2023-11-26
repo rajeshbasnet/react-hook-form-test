@@ -18,7 +18,9 @@ label {
   font-weight: bold;
 }
 
-input[type="text"] {
+input[type="text"],
+input[type="number"] {
+  width: 100%;
   display: block;
   outline: none;
   padding: 0.5rem 0.5rem;
@@ -27,7 +29,7 @@ input[type="text"] {
   background-color: aliceblue;
 }
 
-button {
+.btn {
   background-color: rgb(86, 86, 86);
   color: white;
   padding: 0.5rem 0;
