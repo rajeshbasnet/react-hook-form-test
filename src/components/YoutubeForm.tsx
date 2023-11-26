@@ -10,14 +10,14 @@ import { User } from "../types";
 
 import { zodResolver } from "@hookform/resolvers/zod";
 import { schema } from "../schemas/UserSchema";
-import React from "react";
 
 const YoutubeForm = () => {
   const {
     register,
     handleSubmit,
     control,
-    reset,
+    watch,
+    getValues,
     formState: { errors },
   } = useForm<User>({
     resolver: zodResolver(schema),
@@ -32,10 +32,18 @@ const YoutubeForm = () => {
     control,
   });
 
+  const formData = watch();
+
+  console.log(formData);
+
   const currentNumber = useWatch({
     control,
     name: "currentNumber",
   });
+
+  const values = getValues("username");
+
+  console.log(values);
 
   return (
     <section className="youtube__form__section">
