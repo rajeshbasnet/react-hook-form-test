@@ -1,6 +1,8 @@
 import "./YoutubeForm.css";
 
 import {
+  FieldErrors,
+  SubmitErrorHandler,
   SubmitHandler,
   useFieldArray,
   useForm,
@@ -18,7 +20,13 @@ const YoutubeForm = () => {
     control,
     watch,
     getValues,
-    formState: { errors },
+    formState: {
+      errors,
+      isSubmitting,
+      isSubmitted,
+      submitCount,
+      isSubmitSuccessful,
+    },
   } = useForm<User>({
     resolver: zodResolver(schema),
   });
@@ -27,14 +35,20 @@ const YoutubeForm = () => {
     console.log(user);
   };
 
+  const onError: SubmitErrorHandler<User> = (errors: FieldErrors<User>) => {
+    console.log(errors);
+  };
+
+  console.log(isSubmitting, isSubmitted, submitCount, isSubmitSuccessful);
+
   const { fields, append, remove } = useFieldArray({
     name: "phNumbers",
     control,
   });
 
-  const formData = watch();
+  // const formData = watch();
 
-  console.log(formData);
+  // console.log(formData);
 
   const currentNumber = useWatch({
     control,
@@ -47,7 +61,11 @@ const YoutubeForm = () => {
 
   return (
     <section className="youtube__form__section">
-      <form action="" className="form" onSubmit={handleSubmit(onSubmit)}>
+      <form
+        action=""
+        className="form"
+        onSubmit={handleSubmit(onSubmit, onError)}
+      >
         <label htmlFor="username">Username</label>
         <input type="text" id="username" {...register("username")} />
         <p className="error__message">{errors.username?.message}</p>
