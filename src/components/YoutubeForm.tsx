@@ -18,7 +18,7 @@ const YoutubeForm = () => {
     register,
     handleSubmit,
     control,
-    watch,
+    // watch,
     getValues,
     formState: {
       errors,
@@ -39,6 +39,7 @@ const YoutubeForm = () => {
     console.log(errors);
   };
 
+  // This is logged when component is changed
   console.log(isSubmitting, isSubmitted, submitCount, isSubmitSuccessful);
 
   const { fields, append, remove } = useFieldArray({
